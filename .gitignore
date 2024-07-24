@@ -33,3 +33,21 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore node_modules (if using Node.js)
+/node_modules
+
+# Ignore Yarn error log
+/yarn-error.log
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore Sprockets cache
+/.sass-cache
+
+# Ignore byebug command history
+/.byebug_history
+
+# Ignore system files
+.DS_Store
