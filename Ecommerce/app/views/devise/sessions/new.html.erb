@@ -1,0 +1,50 @@
+<h2 class="text-center mb-4">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-login' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'form-label' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-lg' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group form-check">
+      <%= f.check_box :remember_me, class: 'form-check-input' %>
+      <%= f.label :remember_me, class: 'form-check-label' %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "Log in", class: 'btn btn-primary btn-lg btn-block' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+<!-- Add custom CSS for further adjustments -->
+<style>
+  .form-login {
+    max-width: 400px; /* Restrict the form width */
+    margin: 0 auto; /* Center align the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: #fff; /* Set background color */
+  }
+  .form-login .form-label {
+    font-weight: bold; /* Make labels bold */
+  }
+  .form-login .form-check {
+    display: flex;
+    align-items: center;
+  }
+  .form-login .form-check-label {
+    margin-left: 8px; /* Add space between checkbox and label */
+  }
+</style>

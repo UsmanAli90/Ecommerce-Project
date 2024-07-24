@@ -1,0 +1,66 @@
+<h2 class="text-center mb-4">Sign Up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signup' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'form-label' %>
+    <% if @minimum_password_length %>
+      <small class="form-text text-muted">(Minimum length: <%= @minimum_password_length %> characters)</small>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'form-label' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "Sign Up", class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+<!-- Add custom CSS for further adjustments -->
+<style>
+  .form-signup {
+    max-width: 400px; /* Restrict the form width */
+    margin: 0 auto; /* Center align the form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: #f8f9fa; /* Set background color to a light grey */
+  }
+  .form-signup .form-label {
+    font-weight: bold; /* Make labels bold */
+  }
+  .form-signup .form-control {
+    border-radius: 5px; /* Rounded input fields */
+    border: 1px solid #ced4da; /* Light border color */
+    box-shadow: none; /* Remove default shadow */
+  }
+  .form-signup .form-control:focus {
+    border-color: #80bdff; /* Highlight border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Subtle shadow on focus */
+  }
+  .form-signup .form-text {
+    margin-top: 5px; /* Add space above the help text */
+    font-size: 0.875rem; /* Slightly smaller font size */
+  }
+  .form-signup .btn-primary {
+    background-color: #007bff; /* Custom primary color */
+    border-color: #007bff; /* Match border color */
+    border-radius: 5px; /* Rounded button corners */
+  }
+  .form-signup .btn-primary:hover {
+    background-color: #0056b3; /* Darker color on hover */
+    border-color: #004085; /* Darker border color on hover */
+  }
+</style>

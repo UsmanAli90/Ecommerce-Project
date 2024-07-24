@@ -1,0 +1,47 @@
+<h2 class="text-center mb-4">Sign Up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signup' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'form-label' %>
+    <% if @minimum_password_length %>
+      <small class="form-text text-muted">(Minimum length: <%= @minimum_password_length %> characters)</small>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'form-label' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "Sign Up", class: 'btn btn-primary btn-lg btn-block' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+<!-- Add custom CSS for further adjustments -->
+<style>
+  .form-signup {
+    max-width: 500px; /* Restrict the form width */
+    margin: 0 auto; /* Center align the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: #fff; /* Set background color */
+  }
+  .form-signup .form-label {
+    font-weight: bold; /* Make labels bold */
+  }
+  .form-signup .form-text {
+    margin-top: 5px; /* Add space above the help text */
+  }
+</style>
