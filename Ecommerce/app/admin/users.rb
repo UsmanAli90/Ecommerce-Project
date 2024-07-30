@@ -1,6 +1,5 @@
 ActiveAdmin.register User do
   actions :index, :show
-
   index do
     selectable_column
     id_column
@@ -10,7 +9,6 @@ ActiveAdmin.register User do
     column :created_at
     actions
   end
-
   show do
     attributes_table do
       row :first_name

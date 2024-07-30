@@ -4,7 +4,6 @@ class CreateOrders < ActiveRecord::Migration[7.2]
       t.references :user, null: false, foreign_key: true
       t.datetime :date
       t.string :status
-
       t.timestamps
     end
   end

@@ -4,7 +4,6 @@ class CreateItemSizes < ActiveRecord::Migration[7.2]
       t.references :item, null: false, foreign_key: true
       t.references :size, null: false, foreign_key: true
       t.integer :quantity
-
       t.timestamps
     end
   end
