@@ -1,5 +1,6 @@
 ActiveAdmin.register Item do
   permit_params :name, :description, :price, :category_id, size_ids: []
+
   index do
     selectable_column
     id_column
@@ -12,6 +13,7 @@ ActiveAdmin.register Item do
     end
     actions
   end
+
   form do |f|
     f.inputs do
       f.input :name
@@ -22,6 +24,7 @@ ActiveAdmin.register Item do
     end
     f.actions
   end
+
   show do
     attributes_table do
       row :name
