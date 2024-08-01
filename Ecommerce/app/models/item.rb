@@ -4,7 +4,11 @@ class Item < ApplicationRecord
     has_many :orders, through: :order_items
     has_many :item_sizes
     has_many :sizes, through: :item_sizes
-
+    has_one_attached :image
+    validates :name, presence: true
+    validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+    scope :with_image, -> { joins(image_attachment: :blob) }
+    
     def self.ransackable_attributes(auth_object = nil)
         ["created_at", "description", "id", "name", "price", "updated_at"]
     end

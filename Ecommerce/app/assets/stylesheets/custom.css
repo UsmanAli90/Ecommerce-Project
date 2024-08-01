@@ -1,0 +1,9 @@
+.dropdown-item-custom {
+    color: inherit;      /* Inherit color from parent */
+    text-decoration: none;  /* Remove underline */
+}
+  
+.dropdown-item-custom:hover {
+    color: #8d6e63; /* Change color on hover */
+}
+  

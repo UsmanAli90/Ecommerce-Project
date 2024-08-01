@@ -5,6 +5,6 @@ class Category < ApplicationRecord
       ["created_at", "id", "name", "updated_at"]
     end
 
-    enum name: { Male: 0, Female: 1}
+    enum name: { Male: 0, Female: 1, All: 3}
   end
   
