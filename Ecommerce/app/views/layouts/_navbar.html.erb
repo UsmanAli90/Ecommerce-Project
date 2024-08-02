@@ -18,14 +18,14 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Categories
-        </a>
+          </a>
+        </li>
 
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Category.all.each do |category| %>
             <li><%= link_to category.name, category_path(category), class: 'dropdown-item dropdown-item-custom' %></li>
           <% end %>
-        </ul>
-      </li>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -55,7 +55,6 @@
         <i class="bi bi-cart" style="font-size: 24px;"></i> 
         <span class="badge bg-primary">3</span> 
       </a>
-
     </div>
   </div>
 </nav> 
