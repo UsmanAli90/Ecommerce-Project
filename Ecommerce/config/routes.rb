@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   #devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  root 'products#index'
-  get 'categories/:id', to: 'products#Category_Product', as: 'category'
+  root 'items#index'
+  get 'categories/:id', to: 'categories#index', as: 'category'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
