@@ -4,6 +4,6 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.find(params[:id])
     @q = @category.items.ransack(params[:q])
-    @items = @q.result(distinct: true)
+    @pagy, @items = pagy(@q.result(distinct: true))
   end
 end
