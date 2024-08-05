@@ -4,5 +4,6 @@ class ItemsController < ApplicationController
   def index
     @q = Item.ransack(params[:q])
     @item = @q.result(distinct: true)
+    @pagy, @item = pagy(@item)
   end
 end
