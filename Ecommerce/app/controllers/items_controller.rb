@@ -6,4 +6,8 @@ class ItemsController < ApplicationController
     @item = @q.result(distinct: true)
     @pagy, @item = pagy(@item)
   end
+
+  def show
+    @item = Item.find(params[:id])
+  end
 end

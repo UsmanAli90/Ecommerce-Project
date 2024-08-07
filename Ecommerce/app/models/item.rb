@@ -12,4 +12,8 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   scope :with_image, -> { joins(image_attachment: :blob) }
+
+  def size_names
+    sizes.pluck(:name) 
+  end
 end
