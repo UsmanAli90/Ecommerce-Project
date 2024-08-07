@@ -1,1 +1,17 @@
-<h1> You are in Product Details </h1>
+<h1 class="text-center my-4"><%= @item.name %> details </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <% if @item.image.attached? %>
+        <%= image_tag url_for(@item.image), class: "img-fluid" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h2><%= @item.name %></h2>
+      <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
+      <p><strong>Description:</strong> <%= @item.description %></p>
+      <p><strong>Size:</strong> <%= @item.size_names.join(', ') %></p>
+      <button class="btn btn-success">Add to Cart</button>
+    </div>
+  </div>
+</div>
