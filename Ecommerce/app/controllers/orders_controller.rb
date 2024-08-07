@@ -1,8 +1,4 @@
 class OrdersController < ApplicationController
-  def index
-    
-  end
-  
   def add_to_cart
     @order = current_order # Assuming you have a method to get the current order
     @item = Item.find(params[:item_id])
@@ -17,7 +13,7 @@ class OrdersController < ApplicationController
   def set_current_order
     @current_order = current_order
   end
-  
+
   def current_order
     if session[:order_id]
       Order.find(session[:order_id])
