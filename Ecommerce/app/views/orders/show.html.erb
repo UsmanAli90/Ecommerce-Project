@@ -1,1 +1,11 @@
-<h1> Welcome to show of Order </h1>
+<h1>Order Details</h1>
+<p>Status: <%= @order.status %></p>
+
+<ul>
+  <% @order.order_items.each do |order_item| %>
+    <li>
+      <%= order_item.item.name %> - <%= order_item.item.price %>
+    </li>
+  <% end %>
+</ul>
+<p><strong>Total: <%= number_to_currency(@order.order_items.sum(&:total_price)) %></strong></p>
