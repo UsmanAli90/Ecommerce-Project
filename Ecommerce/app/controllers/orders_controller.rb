@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
-  def index
-  end
+  before_action :set_order, only: [:show]
 
   def show
-    @order = Order.find(params[:id])
   end
 
   def add_to_cart
@@ -19,34 +17,37 @@ class OrdersController < ApplicationController
   end
   
   private
+    def set_order
+      @order = Order.find(params[:id])
+    end
 
-  def set_current_order
-    @current_order = current_order
-  end
+    def set_current_order
+      @current_order = current_order
+    end
 
-  def current_order
-    if current_user
-      if session[:order_id]
-        Order.find_by(id: session[:order_id]) || create_new_order
+    def current_order
+      if current_user
+        if session[:order_id]
+          Order.find_by(id: session[:order_id]) || create_new_order
+        else
+          create_new_order
+        end
       else
-        create_new_order
+        flash[:alert] = 'You need to sign in before adding items to your cart.'
+        redirect_to new_user_session_path
       end
-    else
-      flash[:alert] = 'You need to sign in before adding items to your cart.'
-      redirect_to new_user_session_path
     end
-  end
-  
-  def create_new_order
-    order = current_user.order.new(status: 'Pending')
-    if order.save
-      session[:order_id] = order.id
-      order
-    else
-      Rails.logger.error("Order could not be created: #{order.errors.full_messages.join(', ')}")
-      flash[:alert] = 'Order is not valid. Please try again.'
-      redirect_to items_path
-      nil
+    
+    def create_new_order
+      order = current_user.order.new(status: 'Pending')
+      if order.save
+        session[:order_id] = order.id
+        order
+      else
+        Rails.logger.error("Order could not be created: #{order.errors.full_messages.join(', ')}")
+        flash[:alert] = 'Order is not valid. Please try again.'
+        redirect_to items_path
+        nil
+      end
     end
-  end
 end
