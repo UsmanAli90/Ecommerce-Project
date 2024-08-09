@@ -1,1 +1,27 @@
 @import "bootstrap";
+
+.horizontal-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.card-body.horizontal-card-body {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.item-image {
+  max-width: 150px; 
+  margin-right: 1rem;
+}
