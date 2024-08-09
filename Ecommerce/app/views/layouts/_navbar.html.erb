@@ -19,16 +19,12 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
+
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% Category.all.each do |category| %>
               <li><%= link_to category.name, category_path(category), class: 'dropdown-item' %></li>
             <% end %>
           </ul>
-        </li>
-      
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
       
@@ -50,7 +46,14 @@
           <li><a class="dropdown-item" href= ""><%= link_to 'LogOut', destroy_user_session_path,class: 'dropdown-item dropdown-item-custom', method: :delete %></a></li>
         </ul>
       </div>
-      <i class="bi bi-cart" style="font-size: 24px;"></i> 
+
+      <% if current_user && current_user.order.any? %>
+        <%= link_to order_path(current_user.order.find_by(status: 'Pending')), class: 'cart-icon' do %>
+          <i class="bi bi-cart" style="font-size: 24px;"></i>
+        <% end %>
+      <% else %>
+        <i class="bi bi-cart" style="font-size: 24px;"></i>
+      <% end %>
     </div>
   </div>
 </nav> 

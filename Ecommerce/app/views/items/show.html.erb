@@ -12,7 +12,7 @@
       <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
       <p><strong>Description:</strong> <%= @item.description %></p>
       <p><strong>Size:</strong> <%= @item.size_names.join(', ') %></p>
-      <button class="btn btn-success">Add to Cart</button>
+      <%= link_to 'Add to Cart', add_to_cart_orders_path(item_id: @item.id), class: "btn btn-info" %>
     </div>
   </div>
 </div>

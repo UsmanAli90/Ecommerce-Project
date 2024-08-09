@@ -1,1 +1,33 @@
-<h1> Welcome to show of Order </h1>
+<h1>Order Details</h1>
+<div class="order-items">
+  <% @order.order_items.each do |order_item| %>
+    <div class="card horizontal-card">
+      <div class="card-body horizontal-card-body">
+        <div class="item-details">
+          <% if order_item.item.image.attached? %>
+            <%= image_tag(order_item.item.image, class: 'item-image') %>
+          <% end %>
+
+          <h5 class="card-title"><%= order_item.item.name %></h5>
+          <p class="card-text">Price: <%= number_to_currency(order_item.total_price) %></p>
+          
+          <% if order_item.item.sizes.any? %>
+            <div class="sizes">
+              <strong>Available Sizes:</strong>
+              <ul>
+                <% order_item.item.sizes.each do |size| %>
+                  <li><%= size.name %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<p><strong>Total: <%= number_to_currency(@order.order_items.sum(&:total_price)) %></strong></p>
+
+<div class="text-center">
+  <button class="btn btn-success m-3">Proceed to Checkout</button>
+</div>
