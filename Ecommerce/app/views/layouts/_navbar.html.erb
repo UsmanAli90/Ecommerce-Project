@@ -26,7 +26,12 @@
             <% end %>
           </ul>
         </li>
+        
+        <li class="nav-item">
+          <%= link_to 'Your Orders', orders_path , class: 'nav-link' %>  
+        </li>
       </ul>
+      
       
       <form class="d-flex me-3">
         <input class="form-control me-2" type="search" name="q[name_cont]" placeholder="Search" aria-label="Search">
@@ -41,19 +46,24 @@
         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href=""><%= link_to 'Edit profile', edit_user_registration_path,class: 'dropdown-item dropdown-item-custom' %> </a></li>
-          <li><a class="dropdown-item" href="#">Change Picture</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href= ""><%= link_to 'LogOut', destroy_user_session_path,class: 'dropdown-item dropdown-item-custom', method: :delete %></a></li>
         </ul>
       </div>
 
-      <% if current_user && current_user.order.any? %>
-        <%= link_to order_path(current_user.order.find_by(status: 'Pending')), class: 'cart-icon' do %>
+      <% if current_user %>
+        <% pending_order = current_user.order.where(status: 'Pending').order(created_at: :desc).first %>
+        <% if pending_order %>
+          <%= link_to order_path(pending_order), class: 'cart-icon' do %>
+            <i class="bi bi-cart" style="font-size: 24px;"></i>
+          <% end %>
+        <% else %>
           <i class="bi bi-cart" style="font-size: 24px;"></i>
         <% end %>
       <% else %>
         <i class="bi bi-cart" style="font-size: 24px;"></i>
       <% end %>
+    
     </div>
   </div>
 </nav> 

@@ -3,6 +3,6 @@ class Category < ApplicationRecord
 
   has_many :items 
      
-  enum name: { Male: 0, Female: 1, All: 3}
+  enum name: { Male: 0, Female: 1}
 end
   

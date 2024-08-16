@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_31_110649) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_13_093242) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -126,11 +126,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_31_110649) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "oder_id", null: false
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["oder_id"], name: "index_payments_on_oder_id"
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "phone_number"
+    t.integer "order_id", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -159,5 +163,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_31_110649) do
   add_foreign_key "order_items", "items", on_delete: :cascade
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
-  add_foreign_key "payments", "oders"
 end
