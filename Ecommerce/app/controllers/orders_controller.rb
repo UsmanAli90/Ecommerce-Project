@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
+  def index
+    @orders = current_user.order.order(created_at: :desc)
+  end
+  
   def show
   end
 
